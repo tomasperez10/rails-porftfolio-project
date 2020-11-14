@@ -1,6 +1,6 @@
-## Specifications for the Rails Assessment
+# Specifications for the Rails Assessment
 
-# Specs:
+## Specs:
 
  [x] Using Ruby on Rails for the project
 
@@ -39,5 +39,5 @@ Confirm:
  [] Limited logic in controllers
 
  [] Views use helper methods if appropriate
- 
+
  [] Views use partials if appropriate
