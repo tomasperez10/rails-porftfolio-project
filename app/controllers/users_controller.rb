@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   helper_method :logged_in?, :current_user
+  layout "static"
 
   def new
     if logged_in?
