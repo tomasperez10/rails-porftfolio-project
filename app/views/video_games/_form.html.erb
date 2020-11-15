@@ -1,0 +1,34 @@
+<% if @video_game.errors.any? %>
+  <div class="alert alert-danger" role="alert">
+    <ul>
+    <% @video_game.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= form_for(video_game) do |f| %>
+  <strong><%= f.label :title %></strong>
+  <%= f.text_field :title, class:"form-control" %><br>
+
+  <strong><%= f.label "Video Game Description" %></strong>
+  <%= f.text_area :description, class:"form-control" %><br>
+
+  <div class="form-group">
+    <strong><%= f.label :genre %></strong><br>
+    <%= f.collection_check_boxes(:genre_ids, alphebetize(Genre.all), :id, :name) do |b| %>
+      <div class="form-check form-check-inline">
+        <%= b.check_box(class: "form-check-input") %>
+        <%= b.object.name %>
+      </div>
+    <% end %>
+    or new:
+    <%= f.fields_for :genres, video_game.genres.build do |genre_fields| %>
+      <%= genre_fields.text_field :name %>
+    <% end %>
+  </div>
+
+  <%= f.hidden_field :created_by, value: current_user.id %>
+  <%= f.submit class: "btn btn-primary" %>
+<% end %>

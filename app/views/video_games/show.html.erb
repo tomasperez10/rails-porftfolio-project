@@ -1,0 +1,27 @@
+<% content_for :header do %>
+  <h1><%= @video_game.title %></h1>
+<% end %>
+
+<% content_for :vertical_nav do %>
+  <ul class="nav flex-column">
+    <li class="nav-item mb-3">
+      <%= button_to "Back to Favorite Video Games", video_games_path, :method => "get", class: "btn btn-info btn-block" %>
+    </li>
+    <% if @video_game.created_by == current_user.id %>
+      <li class="nav-item mb-3">
+        <%= button_to "Update video_game details", edit_video_game_path(@video_game), :method => "get", class: "btn btn-info btn-block" %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<% content_for :content do %>
+  <p><%= @video_game.description %></p>
+  <p><strong>Genres</strong>: <%= @video_game.genres.map { |genre| link_to(genre.name, genre_path(genre)) }.join(', ').html_safe %></p>
+
+<% end %>
+
+<% content_for :sidebar do %>
+  <h4>My Genres</h4>
+  <%= genre_options(@genres, @video_game) %>
+<% end %>
