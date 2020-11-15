@@ -1,0 +1,21 @@
+<% content_for :header do %>
+  <h1><%= @genre.name %></h1>
+<% end %>
+
+<% content_for :vertical_nav do %>
+  <ul class="nav flex-column">
+    <li class="nav-item mb-3">
+      <%= button_to "Back to Genres", genres_path, :method => "get", class: "btn btn-info btn-block" %>
+    </li>
+    <li class="nav-item">
+      <%= button_to "Back to Favorite Video Games", video_games_path, :method => "get", class: "btn btn-info btn-block" %>
+    </li>
+  </ul>
+<% end %>
+
+<% content_for :content do %>
+  <p>Video Games:</p>
+  <% alphebetize(@video_games).each do |video_game| %>
+    <p><%= link_to video_game.title, video_game_path(video_game) %></p>
+  <% end %>
+<% end %>

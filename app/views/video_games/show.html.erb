@@ -9,7 +9,7 @@
     </li>
     <% if @video_game.created_by == current_user.id %>
       <li class="nav-item mb-3">
-        <%= button_to "Update video_game details", edit_video_game_path(@video_game), :method => "get", class: "btn btn-info btn-block" %>
+        <%= button_to "Update Video Game Details", edit_video_game_path(@video_game), :method => "get", class: "btn btn-info btn-block" %>
       </li>
     <% end %>
   </ul>
