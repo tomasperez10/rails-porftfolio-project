@@ -6,7 +6,7 @@
     </tr>
   </thead>
   <tbody>
-    <% alphebetize(video_games).each do |video_game| %>
+    <% @video_games.each do |video_game| %>
       <tr>
         <th scope="row"><%= link_to video_game.title, video_game_path(video_game) %></th>
         <td><%= video_game.genres.map { |genre| genre.name }.join(', ') %></td>

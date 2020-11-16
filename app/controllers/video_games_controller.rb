@@ -7,9 +7,9 @@ class VideoGamesController < ApplicationController
   def index
     @user = User.find_by(id: params[:user_id])
     if @user
-      @video_games = @user.shows.uniq
+      @video_games = @user.video_games
     else
-      @video_games = VideoGame.all
+      @video_games = VideoGames.all
     end
   end
 
@@ -18,12 +18,11 @@ class VideoGamesController < ApplicationController
   end
 
   def new
-    @video_game = VideoGame.new
-    @genres = @video_game.genres.build
+    @video_game = VideoGames.new
   end
 
   def create
-   @video_game = VideoGame.new(video_game_params)
+   @video_game = VideoGames.new(video_game_params)
    if @video_game.save
      flash[:message] = "#{@video_game.title}"
      redirect_to video_game_path(@video_game)
@@ -47,17 +46,17 @@ class VideoGamesController < ApplicationController
   end
 
   def search
-    @video_games = VideoGame.search(params[:query])
+    @video_games = VideoGames.search(params[:query])
     render :index
   end
 
   private
-  def show_params
+  def video_game_params
     params.require(:video_game).permit( :title, :description, genre_ids:[], genres_attributes:[:name])
   end
 
   def set_video_game
-    @video_game = VideoGame.find_by(id: params[:id])
+    @video_game = VideoGames.find_by(id: params[:id])
   end
 
   def created_by_current_user

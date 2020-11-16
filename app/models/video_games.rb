@@ -1,7 +1,7 @@
 class VideoGames < ApplicationRecord
 
   has_many :game_genres
-  has_many :genres, through :game_genres
+  has_many :genres, through: :game_genres
   belongs_to :user
 
   validates :title, presence: true
@@ -17,11 +17,5 @@ class VideoGames < ApplicationRecord
     end
   end
 
-  private
-  def destroy_video_games
-    self.video_games.each do |video_game|
-      video_game.destroy
-    end
-  end
 
 end

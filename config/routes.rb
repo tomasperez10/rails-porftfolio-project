@@ -12,6 +12,8 @@ Rails.application.routes.draw do
 
   resources :genres, only: [:index, :show]
 
+  post '/video_games/new', to: 'video_games#index'
+
   get '/search', to: 'video_games#search'
 
   get '/auth/google/callback', to: 'users#google_login'

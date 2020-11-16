@@ -1,15 +1,10 @@
-<% content_for :header do %>
-  <h1>Create a New Favorite Video Game</h1>
-<% end %>
+<h1>Create a New Favorite Video Game</h1>
+<%= render partial: 'form', locals: {video_games: @video_games} %>
+</br>
+<p>
+  <%= button_to "Back to Favorite Video Games", video_games_path, :method => "get", class: "btn btn-info btn-block" %>
+</p>
 
-<% content_for :vertical_nav do %>
-  <ul class="nav flex-column">
-    <li class="nav-item mb-3">
-      <%= button_to "Back to Favorite Video Games", video_games_path, :method => "get", class: "btn btn-info btn-block" %>
-    </li>
-  </ul>
-<% end %>
 
-<% content_for :content do %>
-  <%= render partial: "form", locals: {video_game: @video_game} %>
-<% end %>
+
+

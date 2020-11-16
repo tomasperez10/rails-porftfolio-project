@@ -12,7 +12,7 @@
 
 <% content_for :content do %>
   <p>Click on a genre below to see all video games in that genre</p>
-  <% alphebetize(@genres).each do |genre| %>
+  <% alphabetize(@genres).each do |genre| %>
     <p><%= link_to genre.name, genre_path(genre) %></p>
   <% end %>
 <% end %>
