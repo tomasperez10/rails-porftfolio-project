@@ -1,14 +1,8 @@
-<% content_for :header do %>
-  <h1>Edit <%= @video_game.title %></h1>
-<% end %>
+<h1>Edit <%= @video_game.title %></h1>
 
-<% content_for :vertical_nav do %>
-  <ul class="nav flex-column">
-    <li class="nav-item mb-3">
-      <%= button_to "Back to #{@video_game.title}", video_game_path(@video_game), :method => "get", class: "btn btn-info btn-block" %>
-    </li>
-    <li class="nav-item mb-3">
-      <%= button_to "View All Video Games", shows_path, :method => "get", class: "btn btn-info btn-block" %>
-    </li>
-  </ul>
-<% end %>
+<p>
+  <%= button_to "Back to #{@video_game.title}", video_game_path(@video_game), :method => "get", class: "btn btn-info btn-block" %>
+</p>
+<p>
+  <%= button_to "View All Video Games", shows_path, :method => "get", class: "btn btn-info btn-block" %>
+</p>
