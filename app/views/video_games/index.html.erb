@@ -4,6 +4,9 @@
     <%= button_to "Add New Video Game", new_video_game_path, :method => "get", class: "btn btn-info btn-block" %>
   </p>
   </br>
+  <p>
+  <%= render partial: 'video_games', locals: {video_games: @video_games} %>
+  </p>
 
   <%= form_tag("/search", method: "get") do %>
     <%= label_tag :query, "Search by Title:" %>
